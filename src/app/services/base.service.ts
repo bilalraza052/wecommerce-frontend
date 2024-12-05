@@ -46,7 +46,7 @@ export abstract class BaseService {
 
 };
 
-  url = '/api';
+  url = 'https://backend.rootsrenew.com/api';
   // url=environment.proxy
 
 
