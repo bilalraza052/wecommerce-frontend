@@ -1,0 +1,80 @@
+<div class="container-fluid p-4">
+  <!-- Header Section -->
+  <div class="mb-4 d-flex align-items-center">
+    <button mat-icon-button (click)="back()">
+      <span class="material-icons">arrow_back</span>
+
+    </button>
+    <h2 class="display-10">Order Details</h2> <span class="f-s-14">({{data.orderNumber}})</span>
+    <!-- <p class="lead">Your order has been placed successfully. We’ll notify you when it ships.</p> -->
+  </div>
+
+  <!-- Order Details Section -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Order Details</h5>
+      <p class="mb-0"><strong>Order Number: </strong> {{data.orderNumber}}
+      <p class="mb-0"><strong>Tracking Number: </strong> {{data.trackingNumber}} </p>
+      <p class="mb-0"><strong>Order Date: </strong>{{data.created_at | date}}</p>
+      <p class="mb-0"><strong>Estimated Delivery: </strong> 2-3 Working Days</p>
+      <!-- <p class="mb-0"><strong>Note: Please save this tracking number for your reference in case you need to check the delivery status later.</strong></p> -->
+    </div>
+
+    <!-- <a (click)="navigateToTracking()"  class="site-cart-btn site-button">Track Order</a> -->
+
+  </div>
+
+  <!-- Billing Information Section -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Billing/Shipping Information</h5>
+      <p class="mb-0"><strong>Name: </strong> {{data.firstName}} {{data.lastName}}</p>
+      <p class="mb-0"><strong>Email: </strong>{{data.email}}</p>
+      <p class="mb-0"><strong>Phone: </strong>{{data.phone}}</p>
+      <p class="mb-0"><strong>Address: </strong></p>
+      <p class="mb-0">{{data.address}}</p>
+      <p class="mb-0">{{data.address2}}</p>
+      <p class="mb-0"><strong>Payment Method: </strong>COD</p>
+    </div>
+  </div>
+
+  <!-- Cart Details Section -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Cart Details</h5>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(object of data.cartDetails; track object){
+            <tr>
+              <td>{{object.name}}</td>
+              <td>
+                {{object.quantity}}
+              </td>
+              <td class="numeric">PKR {{object.price}}</td>
+              <td>PKR {{object.quantity * object.price}}</td>
+            </tr>
+          }
+
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="text-end"><strong>Shipping :</strong></td>
+            <td><strong>{{data.shipping}}</strong></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="text-end"><strong>Total:</strong></td>
+            <td><strong>{{data.total}}</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>

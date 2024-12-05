@@ -1,0 +1,46 @@
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #343a40;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  z-index: 1050;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar .list-group-item {
+  background-color: #343a40;
+  border: none;
+}
+
+.sidebar .list-group-item:hover {
+  background-color: #495057;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-toggler {
+  border-color: white;
+}
+
+.bg{
+  background-color: black;
+}
+// .bg{
+//   background-color: #d7b39a;
+// }
+
