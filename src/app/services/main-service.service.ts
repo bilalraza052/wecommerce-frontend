@@ -85,6 +85,12 @@ export class MainServiceService extends BaseService {
   async getOrders(body:any){
     return await this.Post('order/search',body)
   }
+  async getCategory(body:any){
+    return await this.Post('categories/search',body)
+  }
+  async getProduct(body:any){
+    return await this.Post('product/search',body)
+  }
 
 
   async login(body:any){

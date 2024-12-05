@@ -67,7 +67,7 @@ export abstract class BaseService {
 
       resObj.statusCode = fullRes.status;
       if (fullRes.status === 401) {
-        this.route.navigate(['/authentication/login'])
+        this.route.navigate(['/auth'])
         resObj.Errors = fullRes.error && fullRes.error.message ? fullRes.error.message : fullRes.error.error
 
         resObj.IsSuccessful = false;
@@ -170,7 +170,8 @@ export abstract class BaseService {
 
   Put(MethodName: string, body: any): Observable<any> {
     let obj: any = {};
-    let url = `${this.url}${this.controller}/${MethodName}`
+    let url = `${this.url}${this.isCustomControler ? '/' + this.customController : this.controller}${MethodName ? '/'+MethodName : ''}`;
+
     return this.http.put(url, body, { headers: this.getHeaders(), observe: 'response' }).pipe(map((res: any) => {
       return this.handleResponse(res);
     }), catchError((error: any) => {
@@ -216,7 +217,7 @@ export abstract class BaseService {
     if (key) {
       return await this.Put(key, model)
     }
-    return await this.Post('', model)
+    return await this.Post('POST', model)
   }
 
   async getDataById(primaryKey?: any) {

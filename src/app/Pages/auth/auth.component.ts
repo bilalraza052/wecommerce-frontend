@@ -28,7 +28,7 @@ export class AuthComponent extends BaseController<any> {
     this.showError("Login Successfully");
     localStorage.setItem('token',res.Data?.data?.access_token)
     localStorage.setItem('user',JSON.stringify(res.Data?.data?.user))
-    this.route?.navigate(['home'])
+    this.route?.navigate(['order'])
   }
 
 

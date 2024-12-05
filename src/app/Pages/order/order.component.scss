@@ -1,0 +1,40 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .card-header {
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #ddd; /* Border separating header from body */
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    font-size: 1rem;
+  }
+  
+  .badge {
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+  
+  .badge-info {
+    background-color: #17a2b8; /* Blue background for status badge */
+  }
+  

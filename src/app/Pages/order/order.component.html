@@ -1,9 +1,72 @@
-<div>
-  <div class="p-4">
-    <div>
+<div class="container-fluid mt-4">
+  <div class="p-2">
+    <h3>Orders</h3>
 
+  </div>
+  <div class="d-flex align-items-center ">
+    <input class="form-control mb-2 mx-2" [(ngModel)]="searchValue" placeholder="Search.."> 
+    <button class="btn btn-primary mb-2" (click)="getOrderList()">Search</button>
+
+  </div>
+  <div class="row">
+    @for(order of orders;track order){
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <!-- Card Header -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Order #{{ order.orderNumber }}</h5>
+            <span class="badge badge-info">{{ order.orderStatus }}</span> <!-- Status Badge -->
+          </div>
+  
+          <!-- Card Body -->
+          <div class="card-body">
+            <p class="card-text"><strong>Tracking:</strong> {{ order.trackingNumber }}</p>
+            <p class="card-text"><strong>Name:</strong> {{ order.firstName }} {{ order.lastName }}</p>
+            <p class="card-text">
+              <strong>Address:</strong> 
+              {{ order.address }} 
+              @if(order.address2){
+                <span>, {{ order.address2 }}</span> <!-- Only show address2 if it exists -->
+
+              }
+              , {{ order.city }}, {{ order.country }}
+            </p>
+            <p class="card-text"><strong>Phone:</strong> {{ order.phone }}</p>
+            <p class="card-text"><strong>Total Price:</strong> PKR {{ order.total }}</p>
+            <div class="d-flex w-100 justify-content-end">
+              <button class="btn mx-2 btn-secondary btn-sm " (click)="openDialog(order)">Update Status</button>
+              <button class="btn btn-primary btn-sm " (click)="navigate('order-detail/'+order.id)">View Details</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+ 
+  </div>
+</div>
+
+
+<ng-template #updateStatus>
+  <div mat-dialog-title>
+    <div class="d-flex align-items-center justify-content-between">
+      <span>Order Status</span>
+      <button mat-icon-button mat-dialog-close=""><mat-icon>close</mat-icon></button>
 
     </div>
 
   </div>
-</div>
+  <mat-dialog-content>
+    <select [(ngModel)]="model.orderStatus" class="form-control">
+      @for(orderstatus of orderStatuses;track orderstatus){
+        <option [value]="orderstatus.status">{{orderstatus.status}}</option>
+
+      }
+    </select>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+      <button class="btn btn-primary" (click)="update()">Update Status</button>
+
+  </mat-dialog-actions>
+
+</ng-template>

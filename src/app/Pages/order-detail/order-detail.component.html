@@ -12,9 +12,13 @@
   <!-- Order Details Section -->
   <div class="card mb-4">
     <div class="card-body">
-      <h5 class="card-title">Order Details</h5>
+      <div class="d-flex align-items-center justify-content-between">
+        <h5 class="card-title">Order Details</h5>
+        <button class="btn btn-primary" (click)="openDialog()">Update Status</button>
+      </div>
       <p class="mb-0"><strong>Order Number: </strong> {{data.orderNumber}}
       <p class="mb-0"><strong>Tracking Number: </strong> {{data.trackingNumber}} </p>
+      <p class="mb-0"><strong>Order Status: </strong> {{data.orderStatus}} </p>
       <p class="mb-0"><strong>Order Date: </strong>{{data.created_at | date}}</p>
       <p class="mb-0"><strong>Estimated Delivery: </strong> 2-3 Working Days</p>
       <!-- <p class="mb-0"><strong>Note: Please save this tracking number for your reference in case you need to check the delivery status later.</strong></p> -->
@@ -78,3 +82,28 @@
       </table>
     </div>
   </div>
+
+
+  <ng-template #updateStatus>
+    <div mat-dialog-title>
+      <div class="d-flex align-items-center justify-content-between">
+        <span>Order Status</span>
+        <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+  
+      </div>
+  
+    </div>
+    <mat-dialog-content>
+      <select [(ngModel)]="model.orderStatus" class="form-control">
+        @for(orderstatus of orderStatuses;track orderstatus){
+          <option [value]="orderstatus.status">{{orderstatus.status}}</option>
+  
+        }
+      </select>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="btn btn-primary" (click)="update()">Update Status</button>
+  
+    </mat-dialog-actions>
+  
+  </ng-template>

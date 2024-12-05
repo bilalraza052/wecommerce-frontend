@@ -5,6 +5,8 @@ import { AuthComponent } from './Pages/auth/auth.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { OrderComponent } from './Pages/order/order.component';
 import { OrderDetailComponent } from './Pages/order-detail/order-detail.component';
+import { CategoryComponent } from './Pages/category/category.component';
+import { ProductComponent } from './Pages/product/product.component';
 
 export const routes: Routes = [
   {
@@ -13,7 +15,7 @@ export const routes: Routes = [
     canActivateChild:[AuthGuard],
     children:[
       {
-        path:'',redirectTo:'home',pathMatch:'full',
+        path:'',redirectTo:'order',pathMatch:'full',
       },
 
       {
@@ -21,6 +23,12 @@ export const routes: Routes = [
       },
       {
         path:'order', component:OrderComponent
+      },
+      {
+        path:'category', component:CategoryComponent
+      },
+      {
+        path:'product', component:ProductComponent
       },
       {
         path:'order-detail/:id', component:OrderDetailComponent
