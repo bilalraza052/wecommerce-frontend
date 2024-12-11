@@ -99,7 +99,7 @@ export class ProductComponent extends BaseController<any> {
 
   async getOrderList(){
     const res= await(await this.service.getProduct({
-      selector:'name,description,price,stock,category_id,image_path',
+      selector:'name,description,price,stock,category_id,image_path,discountPrice',
       searchValue:this.searchValue
     })).toPromise();
     if(!res.IsSuccessful) return this.showError(res.Errors)

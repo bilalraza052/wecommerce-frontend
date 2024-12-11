@@ -62,8 +62,8 @@
               <td>
                 {{object.quantity}}
               </td>
-              <td class="numeric">PKR {{object.price}}</td>
-              <td>PKR {{object.quantity * object.price}}</td>
+              <td class="numeric">PKR {{object.discountPrice || object.price}}</td>
+              <td>PKR {{object.quantity * (object.discountPrice || object.price)}}</td>
             </tr>
           }
 

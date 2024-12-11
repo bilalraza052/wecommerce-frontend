@@ -14,6 +14,7 @@ export class AuthComponent extends BaseController<any> {
   tabIndex = 0
   roleList:any[]=[]
   registerModel:any={}
+  returnUrl: any;
   constructor(public mainSerice:MainServiceService){
     super();
     localStorage.removeItem('token')
@@ -28,7 +29,8 @@ export class AuthComponent extends BaseController<any> {
     this.showError("Login Successfully");
     localStorage.setItem('token',res.Data?.data?.access_token)
     localStorage.setItem('user',JSON.stringify(res.Data?.data?.user))
-    this.route?.navigate(['order'])
+    
+    this.route?.navigate([this.returnUrl ? this.returnUrl : 'order'])
   }
 
 
@@ -36,6 +38,13 @@ export class AuthComponent extends BaseController<any> {
 
 
   ngOnInit(){
+  }
+  ngAfterViewInit(){
+    this.activatedRoute?.queryParams.subscribe((x:any)=>{
+      if(x.returnUrl){
+        this.returnUrl = x.returnUrl
+      }
+    })
   }
 
 }

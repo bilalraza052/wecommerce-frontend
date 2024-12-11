@@ -13,7 +13,7 @@
         @for(product of product;track product){
             <div class="col-md-4 mb-4">
                 <div class="card">
-                  <img [src]="'http://127.0.0.1:8000/storage/' + product.image_path" width="20%" height="400px" class="card-img-top" alt="Product Image">
+                  <img [src]="'https://backend.rootsrenew.com/' + product.image_path" width="20%" height="400px" class="card-img-top" alt="Product Image">
                   <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">
@@ -84,6 +84,19 @@
               name="price"
               required
               #price="ngModel"
+            />
+        
+          </div>
+          <div class="form-group">
+            <label for="price">Discount Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              [(ngModel)]="model.discountPrice"
+              name="discountPrice"
+              required
+              #discountPrice="ngModel"
             />
         
           </div>

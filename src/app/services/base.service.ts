@@ -46,8 +46,8 @@ export abstract class BaseService {
 
 };
 
-  url = 'https://backend.rootsrenew.com/api';
-  // url=environment.proxy
+  // url = 'https://backend.rootsrenew.com/api';
+  url='/api/'
 
 
   handleResponse(fullRes: any) {

@@ -13,7 +13,11 @@ export class AuthGuard extends BaseController<any> implements CanActivateChild {
 
         const token = localStorage.getItem('token');
         if(!token){
-            this.route?.navigate(['/auth'])
+            this.route?.navigate(['/auth'],{
+                queryParams:{
+                    returnUrl:state.url
+                }
+            })
             this.showError('You have already been Logout or Session Expired')
             return false
         }
